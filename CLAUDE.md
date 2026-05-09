@@ -29,6 +29,18 @@ Components that use browser APIs or React state carry `"use client"` at the top.
 
 Path alias `@/*` resolves to the project root — use it for all cross-directory imports.
 
+## Git Workflow
+
+After completing any meaningful unit of work, commit and push to GitHub so progress is never lost:
+
+```bash
+git add <specific files>
+git commit -m "short, imperative-mood summary (e.g. 'add Coverage section animation')"
+git push
+```
+
+Commit messages should describe *what changed and why*, not just *what was done*. Prefer small, focused commits over large batches — one logical change per commit.
+
 ## Next.js Version Note
 
 This project uses Next.js 16.2.6, which contains breaking changes from earlier versions. Before writing any Next.js-specific code, read the relevant guide in `node_modules/next/dist/docs/` — APIs, conventions, and file structure may differ from training data.
