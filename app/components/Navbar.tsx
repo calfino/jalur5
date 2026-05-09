@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Tentang Kami", href: "#about" },
   { label: "Liputan", href: "#coverage" },
   { label: "Sosial Media", href: "#socials" },
+  { label: "Harga", href: "#pricing" },
   { label: "Endorse", href: "#endorse" },
 ];
 
