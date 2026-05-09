@@ -32,6 +32,8 @@ export default function EndorseSection() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const togglePlatform = (p: string) => {
     setForm((prev) => ({
@@ -42,24 +44,25 @@ export default function EndorseSection() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.brand || !form.email || form.platforms.length === 0) return;
-
-    const subject = encodeURIComponent(`[Endorse] ${form.brand}`);
-    const body = encodeURIComponent(
-      `Halo Jalur5!\n\nSaya ingin mendiskusikan kerjasama endorse.\n\n` +
-      `Brand/Bisnis: ${form.brand}\n` +
-      `Nama: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `No. HP/WA: ${form.phone}\n` +
-      `Platform: ${form.platforms.join(", ")}\n` +
-      `Jenis Konten: ${form.contentType}\n` +
-      `Budget: ${form.budget}\n\n` +
-      `Pesan:\n${form.message}\n\nTerima kasih.`
-    );
-    window.location.href = `mailto:jalur5media@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/endorse", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Gagal mengirim");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Terjadi kesalahan. Coba lagi.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -73,7 +76,7 @@ export default function EndorseSection() {
           </div>
           <h3 className="text-3xl font-black text-white mb-3">Permintaan Dikirim!</h3>
           <p className="text-blue-200">
-            Klien email Anda akan terbuka. Tim kami akan menghubungi dalam 1–2 hari kerja.
+            Formulir Anda berhasil dikirim. Tim kami akan menghubungi dalam 1–2 hari kerja.
           </p>
           <button
             onClick={() => setSubmitted(false)}
@@ -292,13 +295,18 @@ export default function EndorseSection() {
 
                 <button
                   type="submit"
-                  className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-base transition-all hover:shadow-lg hover:shadow-primary/30"
+                  disabled={loading}
+                  className="w-full bg-primary hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-base transition-all hover:shadow-lg hover:shadow-primary/30 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Kirim Permintaan Endorse →
+                  {loading ? "Mengirim..." : "Kirim Permintaan Endorse →"}
                 </button>
 
+                {error && (
+                  <p className="text-center text-sm text-red-500">{error}</p>
+                )}
+
                 <p className="text-center text-xs text-gray-400">
-                  Formulir ini akan membuka klien email Anda. Tim kami akan membalas dalam 1–2 hari kerja.
+                  Data Anda aman. Tim kami akan merespons dalam 1–2 hari kerja.
                 </p>
               </form>
             </div>
