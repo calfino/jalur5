@@ -30,7 +30,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <img src="/logo-j5-ori.png" alt="Jalur5" className="h-8 w-auto" />
+            <img src="/logo-j5-ori.png" alt="Jalur5" className="h-12 w-auto" />
           </a>
 
           {/* Desktop links */}
