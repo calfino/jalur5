@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jalur5 — Media Jakarta",
+  title: "Jalur5 — Station For Your Mobility",
   description:
     "Jalur5 adalah media Jakarta yang meliput transportasi publik, lalu lintas, dan kehidupan kota.",
   keywords: ["Jakarta", "transportasi", "media", "jalur5", "lalu lintas"],
