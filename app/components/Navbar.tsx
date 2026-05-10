@@ -30,12 +30,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#home" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-blue-400 flex items-center justify-center">
-              <span className="text-primary font-black text-sm">J5</span>
-            </div>
-            <span className="text-white font-bold text-xl tracking-tight">
-              Jalur<span className="text-blue-300">5</span>
-            </span>
+            <img src="/logo-j5-ori.png" alt="Jalur5" className="h-8 w-auto" />
           </a>
 
           {/* Desktop links */}

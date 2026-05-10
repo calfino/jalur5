@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   description:
     "Jalur5 adalah media Jakarta yang meliput transportasi publik, lalu lintas, dan kehidupan kota.",
   keywords: ["Jakarta", "transportasi", "media", "jalur5", "lalu lintas"],
+  icons: {
+    icon: "/logo-j5-ori.png",
+    apple: "/logo-j5-ori.png",
+  },
 };
 
 export default function RootLayout({
