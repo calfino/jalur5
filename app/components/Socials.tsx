@@ -5,7 +5,7 @@ const platforms = [
   {
     name: "Instagram",
     handle: "@jalur5",
-    followers: "150K+",
+    followers: "154K",
     url: "https://instagram.com/jalur5",
     color: "from-purple-500 to-pink-500",
     icon: (
@@ -17,7 +17,7 @@ const platforms = [
   {
     name: "Threads",
     handle: "@jalur5",
-    followers: "150K+",
+    followers: "23.3K",
     url: "https://threads.net/@jalur5",
     color: "from-gray-700 to-gray-900",
     icon: (
@@ -29,7 +29,7 @@ const platforms = [
   {
     name: "X (Twitter)",
     handle: "@jalur5_",
-    followers: "Growing",
+    followers: "30,687",
     url: "https://x.com/jalur5_",
     color: "from-gray-800 to-black",
     icon: (
@@ -41,7 +41,7 @@ const platforms = [
   {
     name: "TikTok",
     handle: "@jalur5",
-    followers: "Growing",
+    followers: "35.6K",
     url: "https://tiktok.com/@jalur5",
     color: "from-pink-500 to-red-500",
     icon: (

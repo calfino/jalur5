@@ -25,7 +25,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-blue-700/40 border border-blue-400/30 text-blue-300 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
             <span className="w-1.5 h-1.5 bg-blue-300 rounded-full animate-pulse" />
-            Media Jakarta Terpercaya
+            Terus Beroperasi untuk Indonesia
           </div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
