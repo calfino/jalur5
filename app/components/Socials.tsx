@@ -29,7 +29,7 @@ const platforms = [
   {
     name: "X (Twitter)",
     handle: "@jalur5_",
-    followers: "30,687",
+    followers: "30,7K",
     url: "https://x.com/jalur5_",
     color: "from-gray-800 to-black",
     icon: (
@@ -53,7 +53,7 @@ const platforms = [
   {
     name: "YouTube",
     handle: "Jalur5 Media",
-    followers: "Subscribe",
+    followers: "7.7K",
     url: "https://www.youtube.com/@Jalur5",
     color: "from-red-600 to-red-700",
     icon: (
@@ -109,7 +109,7 @@ export default function Socials() {
                 <div className="text-blue-300 text-sm mt-0.5">{p.handle}</div>
                 <div className="mt-4 text-2xl font-black">{p.followers}</div>
                 <div className="text-blue-200 text-xs">
-                  {p.followers === "Subscribe" ? "di YouTube" : "followers"}
+                  {p.name === "YouTube" ? "subscribers" : "followers"}
                 </div>
                 <div className="mt-4 flex items-center gap-1 text-blue-300 text-sm font-medium group-hover:text-white transition-colors">
                   {p.name === "YouTube" ? "Tonton sekarang" : "Follow sekarang"}
