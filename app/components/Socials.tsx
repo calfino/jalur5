@@ -29,7 +29,7 @@ const platforms = [
   {
     name: "X (Twitter)",
     handle: "@jalur5_",
-    followers: "30,7K",
+    followers: "30.7K",
     url: "https://x.com/jalur5_",
     color: "from-gray-800 to-black",
     icon: (
