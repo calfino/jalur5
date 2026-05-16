@@ -58,8 +58,7 @@ export default function Hero() {
           <div className="mt-16 flex flex-wrap gap-8">
             {[
               { value: "150K+", label: "Followers Instagram" },
-              { value: "150K+", label: "Followers Threads" },
-              { value: "Multi-platform", label: "Hadir di 4 Platform" },
+              { value: "Multi-platform", label: "Hadir di Berbagai Platform" },
             ].map((stat) => (
               <div key={stat.label}>
                 <div className="text-3xl font-black text-white">{stat.value}</div>

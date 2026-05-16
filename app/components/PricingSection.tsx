@@ -6,28 +6,28 @@ const WA_BASE = "https://wa.me/6287855502016";
 const packages = [
   {
     name: "Story / Reels",
-    price: "Rp 500.000",
+    price: "Rp 1.500.000",
     desc: "Konten story atau reels singkat di Instagram atau TikTok.",
     features: ["Durasi 15–30 detik", "Satu platform pilihan", "Revisi 1×"],
     highlight: false,
   },
   {
     name: "Feed Post Foto",
-    price: "Rp 750.000",
+    price: "Rp 2.500.000",
     desc: "Post foto statis di feed Instagram atau X dengan caption copywriting.",
     features: ["Caption profesional", "Satu platform pilihan", "Tagging brand"],
     highlight: false,
   },
   {
     name: "Video TikTok / YouTube",
-    price: "Rp 1.500.000",
+    price: "Rp 3.000.000",
     desc: "Video endorsement penuh di TikTok atau YouTube dengan script konsep.",
     features: ["Durasi 60–90 detik", "Script & konsep konten", "Revisi 1×"],
     highlight: true,
   },
   {
     name: "Paket Bundling",
-    price: "Rp 2.500.000",
+    price: "Rp 5.000.000",
     desc: "Kombinasi 3+ platform sekaligus dengan harga terbaik dan prioritas respons.",
     features: ["Min. 3 platform", "Semua format konten", "Prioritas respons"],
     highlight: false,
