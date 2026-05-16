@@ -3,6 +3,7 @@ import { articleBySlugQuery, articlesQuery } from "@/lib/queries";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 
@@ -13,13 +14,68 @@ export async function generateStaticParams() {
   return articles.map((a: { slug: { current: string } }) => ({ slug: a.slug.current }));
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = await client.fetch(articleBySlugQuery, { slug });
+  if (!article) return {};
+
+  const imageUrl = article.mainImage ? urlFor(article.mainImage).width(1200).height(630).url() : "/logo-j5-ori.png";
+
+  return {
+    title: `${article.title} — Jalur5`,
+    description: article.excerpt || article.title,
+    alternates: { canonical: `/artikel/${slug}` },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt || article.title,
+      url: `https://jalur5.com/artikel/${slug}`,
+      siteName: "Jalur5",
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: article.title }],
+      type: "article",
+      publishedTime: article.publishedAt,
+      authors: article.author?.name ? [article.author.name] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: article.excerpt || article.title,
+      images: [imageUrl],
+    },
+  };
+}
+
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const article = await client.fetch(articleBySlugQuery, { slug });
   if (!article) notFound();
 
+  const imageUrl = article.mainImage ? urlFor(article.mainImage).width(1200).height(630).url() : null;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: article.title,
+    description: article.excerpt || article.title,
+    url: `https://jalur5.com/artikel/${slug}`,
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    author: article.author?.name
+      ? { "@type": "Person", name: article.author.name }
+      : { "@type": "Organization", name: "Jalur5" },
+    publisher: {
+      "@type": "Organization",
+      name: "Jalur5",
+      logo: { "@type": "ImageObject", url: "https://jalur5.com/logo-j5-ori.png" },
+    },
+    image: imageUrl ? [imageUrl] : ["https://jalur5.com/logo-j5-ori.png"],
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://jalur5.com/artikel/${slug}` },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 py-16">
         {article.category && (
